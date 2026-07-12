@@ -1,0 +1,529 @@
+/*=========================================
+INICIO Y PORTADA
+=========================================*/
+.inicio,
+.login-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.logo-inicio {
+    width: 140px;
+    margin-bottom: 20px;
+}
+
+.roles {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.tarjeta {
+    width: 320px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,.15);
+}
+
+.tarjeta h2 {
+    color: #0B5394;
+}
+
+.tarjeta ul {
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.tarjeta li {
+    margin-bottom: 8px;
+}
+
+.btn-ingresar {
+    display: inline-block;
+    background: #0B5394;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-ingresar:hover {
+    background: #083b6b;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/*=========================================
+PANEL DEL AGENTE (CORREGIDO Y AJUSTADO)
+=========================================*/
+.panel {
+    width: 90%;
+    max-width: 550px; /* Reducido de 900px a 550px para evitar que se desparrame en horizontal */
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave idéntica a los otros módulos */
+    text-align: center;
+}
+
+.menu-panel {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-panel {
+    display: block;
+    background: #0B5394;
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: .3s;
+    text-align: center;
+}
+
+.btn-panel:hover {
+    background: #083b6b;
+}
+
+.btn-secundario {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 10px 18px;
+    background: #555;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.btn-secundario:hover {
+    background: #333;
+}
+
+/*=========================================
+MEJORAS DE DISEÑO GLOBAL Y PLACEHOLDERS
+=========================================*/
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+select {
+    background-color: #ffffff !important;
+    color: #2d3748 !important;
+}
+
+input::placeholder {
+    color: #b0bfc1 !important;
+    opacity: 1 !important;
+    font-weight: 400 !important;
+}
+
+input:-ms-input-placeholder { color: #b0bfc1 !important; }
+input::-ms-input-placeholder { color: #b0bfc1 !important; }
+
+/*===================================================================
+MÓDULO DE REGISTRO
+===================================================================*/
+.wrapper { 
+    max-width: 850px; 
+    margin: 40px auto;
+    background: #ffffff; 
+    padding: 35px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Encabezado del panel interno */
+.header-box { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 20px; 
+    margin-bottom: 30px; 
+}
+.header-box img { max-width: 80px; height: auto; }
+.header-box h1 { font-size: 24px; color: #0275d8; margin: 0; font-weight: 700; }
+.header-box h2 { font-size: 16px; color: #6c757d; margin: 5px 0 0 0; font-weight: 400; }
+
+/* Grillas dinámicas para los campos */
+fieldset { 
+    border: 1px solid #e2e8f0; 
+    border-radius: 8px; 
+    padding: 20px;
+    margin-bottom: 25px; 
+    background: #fafbfc; 
+}
+legend { 
+    font-weight: 600; 
+    color: #4a5568; 
+    padding: 0 10px; 
+    font-size: 15px;
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.form-group { display: flex; flex-direction: column; margin-bottom: 10px; }
+
+label { 
+    font-size: 13px;
+    font-weight: 600; 
+    color: #4a5568; 
+    margin-bottom: 6px; 
+}
+
+/* Alineación del RUT */
+.rut-flex { display: flex; gap: 8px; align-items: center; }
+.rut-flex input[name="rut"] { flex: 4; }
+.rut-flex input[name="dv"] { flex: 1; text-align: center; font-weight: bold; text-transform: uppercase; }
+
+/* Botoneras de acción de formularios */
+.btn-container { display: flex; gap: 15px; margin-top: 30px; }
+
+.btn-submit { 
+    flex: 2; 
+    background-color: #22c55e; 
+    color: white; 
+    border: none; 
+    padding: 14px;
+    border-radius: 6px; 
+    font-size: 15px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: background 0.2s; 
+}
+.btn-submit:hover { background-color: #16a34a; }
+
+.btn-reset { 
+    flex: 1; 
+    background-color: #edf2f7; 
+    color: #4a5568; 
+    border: 1px solid #cbd5e0; 
+    padding: 14px; 
+    border-radius: 6px;
+    font-size: 15px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    transition: background 0.2s; 
+}
+.btn-reset:hover { background-color: #e2e8f0; }
+
+.btn-back { 
+    display: inline-block; 
+    text-decoration: none; 
+    background: #0275d8; 
+    color: white; 
+    padding: 10px 18px; 
+    border-radius: 6px;
+    font-size: 14px; 
+    font-weight: 500; 
+    margin-bottom: 20px; 
+    transition: background 0.2s; 
+}
+.btn-back:hover { background-color: #015caa; }
+
+/*===================================================================
+PANTALLA DE LOGIN Y ALERTAS DE SEGURIDAD
+===================================================================*/
+.alerta-seguridad {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin: 25px auto;
+    max-width: 680px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.05);
+}
+
+.btn-volver-portada {
+    display: inline-block;
+    margin-top: 25px;
+    color: #0275d8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.btn-volver-portada:hover { 
+    color: #015caa; 
+    text-decoration: underline;
+}
+
+/*===================================================================
+MÓDULO DE CONSULTAS Y TABLAS CORPORATIVAS
+===================================================================*/
+.buscador-container { 
+    background: #fafbfc; 
+    padding: 20px; 
+    border-radius: 8px;
+    margin-bottom: 25px; 
+    border: 1px solid #e2e8f0; 
+}
+.form-busqueda { display: flex; gap: 10px; }
+
+.input-busqueda { 
+    flex: 1;
+    padding: 10px 14px; 
+    border: 1px solid #cbd5e0; 
+    border-radius: 6px; 
+    font-size: 15px; 
+    transition: all 0.2s;
+}
+.input-busqueda:focus {
+    border-color: #0275d8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 117, 216, 0.15);
+}
+
+.btn-buscar { 
+    background-color: #0275d8; 
+    color: white; 
+    border: none; 
+    padding: 10px 22px;
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 14px;
+    transition: background 0.2s;
+}
+.btn-buscar:hover { background-color: #015caa; }
+
+.btn-limpiar { 
+    background-color: #edf2f7; 
+    color: #4a5568; 
+    text-decoration: none; 
+    padding: 10px 18px; 
+    border-radius: 6px; 
+    display: inline-block;
+    text-align: center; 
+    font-weight: 500; 
+    font-size: 14px;
+    border: 1px solid #cbd5e0;
+    transition: background 0.2s;
+}
+.btn-limpiar:hover { background-color: #e2e8f0; }
+
+/* Estructura de la Tabla */
+.tabla-resultados { 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 15px;
+    background: white; 
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+.tabla-resultados th, .tabla-resultados td { 
+    padding: 14px; 
+    border-bottom: 1px solid #edf2f7; 
+    text-align: left; 
+    font-size: 14px;
+}
+.tabla-resultados th { 
+    background-color: #f7fafc; 
+    color: #4a5568; 
+    font-weight: 600;
+}
+.tabla-resultados tr:last-child td { border-bottom: none; }
+
+/* Badges de estado */
+.badge { 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    font-weight: 600;
+}
+.badge-activo { background: #d4edda; color: #155724; }
+.badge-inactivo { background: #f8d7da; color: #721c24; }
+
+.btn-tabla-editar { 
+    background-color: #f0ad4e; 
+    color: white; 
+    padding: 6px 14px;
+    text-decoration: none; 
+    border-radius: 6px; 
+    font-size: 13px; 
+    font-weight: 600; 
+    display: inline-block; 
+    transition: background 0.2s;
+}
+.btn-tabla-editar:hover { background-color: #ec971f; }
+
+.alerta-vacio {
+    background: #fffbeb; 
+    color: #b45309; 
+    padding: 15px; 
+    border-radius: 8px;
+    text-align: center; 
+    font-weight: 600; 
+    border: 1px solid #fde68a; 
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/*===================================================================
+MÓDULO DE EDICIÓN Y FORMULARIOS
+===================================================================*/
+.formulario-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.grupo-formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.grupo-formulario label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.btn-guardar {
+    flex: 1;
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-guardar:hover { background-color: #16a34a; }
+
+.btn-cancelar {
+    flex: 1;
+    background-color: #ef4444;
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.2s;
+}
+.btn-cancelar:hover { background-color: #dc2626; }
+
+/*===================================================================
+ALERTAS OPERACIONALES GENERALES Y MAQUETACIÓN
+===================================================================*/
+.header-box-centrado {
+    justify-content: center;
+    text-align: center; 
+    flex-direction: column;
+}
+
+.margin-top-links {
+    margin-top: 35px; 
+    text-align: left;
+}
+
+.footer-corporativo {
+    color: #718096; 
+    font-size: 12px; 
+    margin-top: 50px; 
+    text-align: center;
+}
+.footer-corporativo hr {
+    border: 0; 
+    border-top: 1px solid #e2e8f0; 
+    max-width: 400px; 
+    margin: 20px auto;
+}
+
+.alerta-exito {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px auto;
+    max-width: 500px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+}
+
+.alerta-error-panel {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px auto;
+    max-width: 500px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+}
+
+.acciones-salida {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/*===================================================================
+PORTAL DEL CLIENTE - ESTILOS EXCLUSIVOS
+===================================================================*/
+.portal-cliente {
+    background-color: #ffffff;
+    border-top: 5px solid #0275d8;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.tarjeta-plan {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    border: 1px solid #7dd3fc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.tarjeta-plan h3 {
+    margin: 0 0 5px 0;
+    color: #0369a1;
+    font-size: 16px;
+}
+.tarjeta-plan .plan-nombre {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0c4a6e;
+}
