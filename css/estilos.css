@@ -121,23 +121,56 @@ PANEL DEL AGENTE (CORREGIDO Y AJUSTADO)
 /*=========================================
 MEJORAS DE DISEÑO GLOBAL Y PLACEHOLDERS
 =========================================*/
+/* Inputs más altos, legibles y proporcionados */
 input[type="text"], 
 input[type="email"], 
 input[type="tel"], 
 select {
-    background-color: #ffffff !important;
-    color: #2d3748 !important;
+    padding: 12px 14px; /* Más aire al escribir */
+    border: 1px solid #cbd5e0; 
+    border-radius: 6px; 
+    font-size: 15px; 
+    transition: all 0.2s ease; 
+    background-color: #fff; 
+    color: #2d3748;
+    width: 100%; 
+    box-sizing: border-box;
 }
 
-input::placeholder {
-    color: #b0bfc1 !important;
-    opacity: 1 !important;
-    font-weight: 400 !important;
+/* Fuerza a la tabla a respetar el ancho máximo del contenedor blanco */
+.tabla-resultados { 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 25px;
+    background: white; 
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    table-layout: fixed; 
 }
 
-input:-ms-input-placeholder { color: #b0bfc1 !important; }
-input::-ms-input-placeholder { color: #b0bfc1 !important; }
+/* Control de celdas para evitar que textos largos estiren la tabla */
+.tabla-resultados th, .tabla-resultados td { 
+    padding: 12px 10px; 
+    border-bottom: 1px solid #edf2f7; 
+    text-align: left; 
+    font-size: 13.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Corta con '...' si el texto es muy largo */
+}
 
+/* Ajuste al contenedor del buscador */
+.buscador-container { 
+    background: #fafbfc; 
+    padding: 20px; 
+    border-radius: 8px;
+    margin-bottom: 25px; 
+    border: 1px solid #e2e8f0;
+    box-sizing: border-box;
+}
 /*===================================================================
 MÓDULO DE REGISTRO
 ===================================================================*/
@@ -148,6 +181,32 @@ MÓDULO DE REGISTRO
     padding: 35px; 
     border-radius: 12px; 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/*===================================================================
+ANCHO IDEAL Y FLUIDO PARA FORMULARIOS DE REGISTRO
+===================================================================*/
+.wrapper-formulario {
+    max-width: 750px !important; /* Evita que el formulario se estire infinitamente */
+    margin: 30px auto;
+}
+
+/* Limpieza del enlace superior para alinearse con tu estilo puro */
+.btn-back-limpio {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #0073dd;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-back-limpio:hover {
+    background-color: #005bb5;
 }
 
 /* Encabezado del panel interno */
@@ -441,10 +500,12 @@ MÓDULO DE EDICIÓN Y FORMULARIOS
 /*===================================================================
 ALERTAS OPERACIONALES GENERALES Y MAQUETACIÓN
 ===================================================================*/
+/* Variante para centrar logo y títulos en formularios compactos */
 .header-box-centrado {
-    justify-content: center;
-    text-align: center; 
-    flex-direction: column;
+    flex-direction: column !important;
+    text-align: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
 }
 
 .margin-top-links {
@@ -526,4 +587,76 @@ PORTAL DEL CLIENTE - ESTILOS EXCLUSIVOS
     font-size: 24px;
     font-weight: 700;
     color: #0c4a6e;
+}
+
+/*===================================================================
+CONTENEDOR MEJORADO PARA TABLAS EXTENSAS
+===================================================================*/
+.panel-tabla {
+    max-width: 1100px !important; /* Amplía el espacio para que quepan las 7 columnas */
+}
+
+/* Permite que los textos se adapten y salten de línea en celdas muy largas */
+.tabla-resultados td {
+    white-space: normal !important; 
+    word-break: break-word !important; 
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+/*===================================================================
+RESPONSIVIDAD Y ADAPTACIÓN MÓVIL (MEDIA QUERIES)
+===================================================================*/
+@media screen and (max-width: 768px) {
+    /* 1. Ajuste de los contenedores principales */
+    .panel, .wrapper, .panel-tabla, .wrapper-formulario {
+        width: 95% !important;
+        margin: 15px auto !important;
+        padding: 15px !important;
+    }
+
+    /* 2. Transformar las grillas de formularios en una sola columna */
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* 3. Forzar que los elementos ocupen todo el ancho en móviles */
+    .form-group[style*="grid-column"] {
+        grid-column: span 1 !important;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-submit, .btn-reset {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* 4. Solución definitiva para la tabla en pantallas pequeñas: scroll horizontal */
+    .tabla-resultados {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* Activa la barra de desplazamiento horizontal interna */
+        white-space: nowrap !important; /* Mantiene las celdas en línea para poder desplazarse */
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tabla-resultados td {
+        white-space: nowrap !important; /* Evita que las celdas se deformen al achicarse */
+    }
+
+    /* 5. Ajustar el buscador */
+    .form-busqueda {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-busqueda {
+        width: 100% !important;
+    }
 }

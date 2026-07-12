@@ -67,7 +67,7 @@ $datos_cliente = mysqli_fetch_assoc($resultado_cliente);
 
     <div class="tarjeta-plan">
         <h3>Tu Plan Contratado Actual:</h3>
-        <div class="plan-nombre">🚀 Plan <?php echo htmlspecialchars($datos_cliente['plan']); ?></div>
+        <div class="plan-nombre"> Plan <?php echo htmlspecialchars($datos_cliente['plan']); ?></div>
     </div>
 
     <div class="portal-cliente">
@@ -104,7 +104,7 @@ $datos_cliente = mysqli_fetch_assoc($resultado_cliente);
 
             <div class="btn-container" style="margin-top: 25px;">
                 <button type="submit" class="btn-guardar" style="background-color: #0275d8;">
-                    📨 Enviar Solicitud de Cambio
+                     Enviar Solicitud de Cambio
                 </button>
             </div>
         </form>
@@ -112,13 +112,13 @@ $datos_cliente = mysqli_fetch_assoc($resultado_cliente);
 
     <?php if (isset($_GET['success'])): ?>
         <div class="alerta-exito" style="margin-top: 20px;">
-            ✅ <?php echo htmlspecialchars($_GET['success']); ?>
+             <?php echo htmlspecialchars($_GET['success']); ?>
         </div>
     <?php endif; ?>
 
     <div class="acciones-salida" style="margin-top: 35px;">
-        <a href="login.php" class="btn-secundario">🔄 Cambiar de Perfil</a>
-        <a href="index.php" class="btn-secundario"> 🚪 Cerrar Sesión Virtual</a>
+        <a href="login.php" class="btn-secundario"> Cambiar de Perfil</a>
+        <a href="index.php" class="btn-secundario">  Cerrar Sesión Virtual</a>
     </div>
 
 </div>

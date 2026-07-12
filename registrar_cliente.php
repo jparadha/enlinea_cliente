@@ -1,9 +1,9 @@
 <?php
 /*===================================================================
 Empresa Telefónica En Línea - Taller de Integración de Software
-Archivo: registrar_cliente.php (Módulo Optimizado y Limpio)
+Archivo: registrar_cliente.php
 Autor: Jparadha
-Descripción: Formulario de ingreso de abonados. 
+Descripción: Formulario de ingreso de abonados 
 ===================================================================*/
 
 session_start();
@@ -27,17 +27,15 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'Agente') {
 
 <body>
 
-<div class="wrapper">
+<div class="wrapper wrapper-formulario">
 
-    <header class="header-box">
-        <img src="img/logo.png" alt="Logo Telefónica En Línea">
-        <div>
-            <h1>Empresa Telefónica En Línea</h1>
-            <h2>Registro de Clientes Usuarios</h2>
-        </div>
-    </header>
+    <div class="header-box header-box-centrado">
+        <img src="img/logo.png" alt="Logo Empresa">
+        <h1>Empresa Telefónica En Línea</h1>
+        <h2>Registro de Clientes Usuarios</h2>
+    </div>
 
-    <a href="agente.php" class="btn-back">← Volver al Panel Principal</a>
+    <a href="agente.php" class="btn-back-limpio">Volver al Panel Principal</a>
 
     <form action="procesar.php" method="POST">
 
@@ -90,7 +88,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'Agente') {
                     <input type="text" id="direccion" name="direccion" placeholder="Calle, Número, Comuna" required>
                 </div>
                 <div class="form-group">
-                    <label for="telefono">Teléfono Movil</label>
+                    <label for="telefono">Teléfono Móvil</label>
                     <input type="tel" id="telefono" name="telefono" placeholder="+56912345678" required>
                 </div>
             </div>
@@ -128,8 +126,8 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'Agente') {
         </fieldset>
 
         <div class="btn-container">
-            <button type="submit" class="btn-submit"> Registrar y Guardar Abonado</button>
-            <button type="reset" class="btn-reset"> Limpiar Formulario</button>
+            <button type="submit" class="btn-submit">Registrar y Guardar Abonado</button>
+            <button type="reset" class="btn-reset">Limpiar Formulario</button>
         </div>
 
     </form>

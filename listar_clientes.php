@@ -3,37 +3,35 @@
 Empresa Telefónica En Línea - Taller de Integración de Software
 Archivo: listar_clientes.php 
 Autor: Jparadha
-Descripción: Panel de búsqueda dinámica por RUT o Nombre de abonados.
-             Permite filtrar en tiempo real y enlaza directamente a editar.
+Descripción: Panel de búsqueda dinámica global (Agentes y Clientes).
+             Muestra los registros ordenados sin desbordes ni iconos.
 ===================================================================*/
 
 session_start();
 require_once 'conexion.php';
 
-// 1. CONTROL DE ACCESO (Prueba de Seguridad para TestLink)
+// 1. CONTROL DE ACCESO (Seguridad Obligatoria)
 if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'Agente') {
     header("Location: login.php?error=" . urlencode("Acceso denegado. Se requieren permisos de Agente."));
     exit();
 }
 
-// 2. PROCESAR LA BÚSQUEDA DINÁMICA
+// 2. PROCESAR LA BÚSQUEDA DINÁMICA DE TODOS LOS ROLES
 $buscar = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
 
 if (!empty($buscar)) {
     // Sanitizamos el término para evitar inyecciones SQL
     $termino = mysqli_real_escape_string($conn, $buscar);
     
-    // Consulta flexible: busca coincidencias por Nombre o RUT, pero EXCLUSIVAMENTE si son Clientes
-    $sql = "SELECT id_cliente, usuario, estado, rut, dv, nombre, correo, plan, telefono, tipo_cambio 
+    // Consulta flexible: Busca coincidencias por Nombre o RUT en TODOS los usuarios del sistema
+    $sql = "SELECT id_cliente, usuario, estado, rut, dv, nombre, correo, plan, telefono, tipo_cambio, rol 
             FROM clientes 
             WHERE (nombre LIKE '%$termino%' OR rut LIKE '%$termino%') 
-            AND rol = 'Cliente' 
             ORDER BY nombre ASC";
 } else {
-    // Si no hay búsqueda activa, muestra los últimos 10 que sean exclusivamente Clientes
-    $sql = "SELECT id_cliente, usuario, estado, rut, dv, nombre, correo, plan, telefono, tipo_cambio 
+    // Si no hay búsqueda activa, muestra los últimos 10 usuarios registrados en general
+    $sql = "SELECT id_cliente, usuario, estado, rut, dv, nombre, correo, plan, telefono, tipo_cambio, rol 
             FROM clientes 
-            WHERE rol = 'Cliente' 
             ORDER BY id_cliente DESC LIMIT 10";
 }
 
@@ -45,21 +43,23 @@ $resultado = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar Clientes - Telefónica En Línea</title>
+    <title>Consultar Usuarios - Telefónica En Línea</title>
     <link rel="icon" href="img/logo.png">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
 
-<div class="panel">
+<div class="panel panel-tabla">
 
     <img src="img/logo.png" class="logo-inicio" alt="Logo Telefónica En Línea">
 
     <h1>Consulta General de Abonados</h1>
     <h2>Módulo de Búsqueda de Clientes</h2>
     
-    <p style="color: #4a5568; margin-bottom: 25px;">Utilice este módulo para localizar abonados registrados en la sucursal y acceder a sus expedientes de modificación técnica.</p>
+    <p style="color: #4a5568; margin-bottom: 25px;">
+        Utilice este módulo para localizar abonados registrados en la sucursal y acceder a sus expedientes de modificación técnica.
+    </p>
 
     <div class="buscador-container">
         <form action="listar_clientes.php" method="GET" class="form-busqueda">
@@ -78,7 +78,7 @@ $resultado = mysqli_query($conn, $sql);
     </div>
 
     <h3 style="text-align: left; color: #2d3748; font-size: 18px; margin-bottom: 15px;">
-        <?php echo !empty($buscar) ? 'Resultados de la Búsqueda' : 'Últimos Abonados Registrados'; ?>
+        <?php echo !empty($buscar) ? 'Resultados de la Búsqueda' : 'Últimos Usuarios Registrados'; ?>
     </h3>
 
     <?php if ($resultado && mysqli_num_rows($resultado) > 0): ?>
@@ -90,6 +90,7 @@ $resultado = mysqli_query($conn, $sql);
                     <th>Correo Electrónico</th>
                     <th>Teléfono</th>
                     <th>Plan Activo</th>
+                    <th>Rol</th>
                     <th>Estado</th>
                     <th style="text-align: center;">Acción Administrativa</th>
                 </tr>
@@ -102,6 +103,7 @@ $resultado = mysqli_query($conn, $sql);
                         <td><?php echo htmlspecialchars($row['correo']); ?></td>
                         <td><?php echo htmlspecialchars($row['telefono']); ?></td>
                         <td><?php echo htmlspecialchars($row['plan']); ?></td>
+                        <td><strong><?php echo htmlspecialchars($row['rol']); ?></strong></td>
                         <td>
                             <span class="badge <?php echo ($row['estado'] === 'Activo') ? 'badge-activo' : 'badge-inactivo'; ?>">
                                 <?php echo htmlspecialchars($row['estado']); ?>
@@ -118,12 +120,12 @@ $resultado = mysqli_query($conn, $sql);
         </table>
     <?php else: ?>
         <div class="alerta-vacio">
-             No se encontraron clientes que coincidan con el término: "<?php echo htmlspecialchars($buscar); ?>"
+             No se encontraron usuarios que coincidan con el término: "<?php echo htmlspecialchars($buscar); ?>"
         </div>
     <?php endif; ?>
 
     <div class="margin-top-links">
-        <a href="agente.php" class="btn-secundario"> Volver al Panel Principal</a>
+        <a href="agente.php" class="btn-secundario">Volver al Panel Principal</a>
     </div>
 
 </div>
